@@ -5,7 +5,7 @@ import type { Route } from './types/route.js';
 import logger from './utils/logger.js';
 
 const app = createApp();
-const mainLogger = logger.child({ module: 'main' });
+const mainLogger = logger.child({ name: 'main' });
 
 await readdirSync('routes').reduce(async (prev, route) => {
   await prev;
@@ -13,9 +13,9 @@ await readdirSync('routes').reduce(async (prev, route) => {
   try {
     const routeInstance: Route = (await import(`./routes/${route}`)).default;
     app.use(routeInstance.path, routeInstance.handler);
-    mainLogger.info(`Loaded route ${route}.`);
+    mainLogger.info(`loaded route ${route}.`);
   } catch (e) {
-    mainLogger.error(e, `Failed to load route ${route}.`);
+    mainLogger.error(e, `failed to load route ${route}.`);
   }
 }, Promise.resolve());
 
@@ -23,4 +23,4 @@ const port = process.env.port || 3000;
 
 createServer(toNodeListener(app)).listen(port);
 
-mainLogger.info(`http://localhost:${port}`);
+mainLogger.info(`serving on http://localhost:${port}`);
