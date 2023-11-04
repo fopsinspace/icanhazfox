@@ -1,0 +1,19 @@
+{
+  "name": "@nyaaaaaaaaaaaaaaa/icanhazfox",
+  "version": "1.0.0-alpha",
+  "private": true,
+  "license": "MPL-2.0",
+  "contributors": [
+    "Flero <flero@flero.dev> (https://flero.dev)",
+    "Nora <ivy@not-ivy.dev> (https://not-ivy.dev)"
+  ],
+  "workspaces": [
+    "./packages/*"
+  ],
+  "packageManager": "yarn@4.0.1",
+  "devDependencies": {
+    "eslint": "^8.52.0",
+    "prettier": "^3.0.3",
+    "typescript": "^5.2.2"
+  }
+}
