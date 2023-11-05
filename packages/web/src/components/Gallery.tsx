@@ -6,7 +6,7 @@ export default function Gallery() {
     {
       // https://twitter.com/FlipyDweeb/status/1721254795040710976
       id: '1',
-      name: 'Eggs 🥚',
+      caption: 'Eggs 🥚',
       author: {
         name: 'FlipyDweeb (Twitter)',
         avatar:
@@ -19,7 +19,7 @@ export default function Gallery() {
     {
       // https://x.com/ShepGoesBlep/status/1721236286608900195
       id: '2',
-      name: 'No',
+      caption: 'No',
       author: {
         name: 'ShepGoesBlep (Twitter)',
         avatar:
@@ -32,7 +32,7 @@ export default function Gallery() {
     {
       // https://x.com/DarkKolaKun/status/1721214155095523650
       id: '3',
-      name: 'polite cat',
+      caption: 'polite cat',
       author: {
         name: 'DarkKolaKun (Twitter)',
         avatar:
@@ -45,7 +45,7 @@ export default function Gallery() {
     {
       // https://x.com/koiwypher/status/1721225692539388267
       id: '4',
-      name: ':3',
+      caption: ':3',
       author: {
         name: 'koiwypher (Twitter)',
         avatar:
@@ -59,7 +59,8 @@ export default function Gallery() {
       // https://x.com/TheRoguez/status/1721191647755526546
       // i'm so sorry, fren :c
       id: '5',
-      name: '',
+      caption:
+        "it's strange to wake up without him, and yet it doesn't feel like he went anywhere. I practiced nembutsu with him which is helping a lot. thank you for the kind words 🫂",
       author: {
         name: 'TheRoguez (Twitter)',
         avatar:
@@ -73,7 +74,6 @@ export default function Gallery() {
     {
       // https://x.com/FopsHourly/status/1721271201463685235
       id: '6',
-      name: '',
       author: {
         name: 'FopsHourly (Twitter)',
         avatar:
@@ -86,7 +86,6 @@ export default function Gallery() {
     {
       // https://twitter.com/HourlyYote/status/1721271225383842013
       id: '7',
-      name: '',
       author: {
         name: 'HourlyYote (Twitter)',
         avatar:
