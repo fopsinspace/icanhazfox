@@ -1,5 +1,6 @@
 import { type ImageProps } from './Image';
 import MasonryColumn from './MasonryColumn';
+import useWindowDimensions from '../hooks/useWindowDimensions';
 
 export default function Gallery() {
   const images: ImageProps[] = [
@@ -9,8 +10,7 @@ export default function Gallery() {
       caption: 'Eggs 🥚',
       author: {
         name: 'FlipyDweeb (Twitter)',
-        avatar:
-          'https://pbs.twimg.com/profile_images/1560453407370084352/GrloIyac_400x400.jpg',
+        avatar: 'https://pbs.twimg.com/profile_images/1560453407370084352/GrloIyac_400x400.jpg',
       },
       src: 'https://pbs.twimg.com/media/F-MgGLJX0AAPXEC?format=jpg&name=small',
       views: 4_371,
@@ -22,8 +22,7 @@ export default function Gallery() {
       caption: 'No',
       author: {
         name: 'ShepGoesBlep (Twitter)',
-        avatar:
-          'https://pbs.twimg.com/profile_images/1714107167236657152/kQ4YhtsV_400x400.jpg',
+        avatar: 'https://pbs.twimg.com/profile_images/1714107167236657152/kQ4YhtsV_400x400.jpg',
       },
       src: 'https://pbs.twimg.com/media/F-MPRslaUAA9psY?format=jpg&name=small',
       views: 12_200,
@@ -35,8 +34,7 @@ export default function Gallery() {
       caption: 'polite cat',
       author: {
         name: 'DarkKolaKun (Twitter)',
-        avatar:
-          'https://pbs.twimg.com/profile_images/1689920558119493632/OgidYj3U_normal.jpg',
+        avatar: 'https://pbs.twimg.com/profile_images/1689920558119493632/OgidYj3U_normal.jpg',
       },
       src: 'https://pbs.twimg.com/media/F-L7HpyXMAI1fVM?format=jpg&name=small',
       views: 3_757,
@@ -48,8 +46,7 @@ export default function Gallery() {
       caption: ':3',
       author: {
         name: 'koiwypher (Twitter)',
-        avatar:
-          'https://pbs.twimg.com/profile_images/1696599720926289920/swXdr1ht_400x400.jpg',
+        avatar: 'https://pbs.twimg.com/profile_images/1696599720926289920/swXdr1ht_400x400.jpg',
       },
       src: 'https://pbs.twimg.com/media/F-MFlexXYAEW2fv?format=jpg&name=small',
       views: 18_700,
@@ -63,8 +60,7 @@ export default function Gallery() {
         "it's strange to wake up without him, and yet it doesn't feel like he went anywhere. I practiced nembutsu with him which is helping a lot. thank you for the kind words 🫂",
       author: {
         name: 'TheRoguez (Twitter)',
-        avatar:
-          'https://pbs.twimg.com/profile_images/1690383003204358145/XYBJr2NF_400x400.jpg',
+        avatar: 'https://pbs.twimg.com/profile_images/1690383003204358145/XYBJr2NF_400x400.jpg',
       },
       src: 'https://video.twimg.com/tweet_video/F-Lkrl9W4AAE3d1.mp4',
       isAnimated: true,
@@ -76,8 +72,7 @@ export default function Gallery() {
       id: '6',
       author: {
         name: 'FopsHourly (Twitter)',
-        avatar:
-          'https://pbs.twimg.com/profile_images/1575265133953437697/ywCczsti_400x400.jpg',
+        avatar: 'https://pbs.twimg.com/profile_images/1575265133953437697/ywCczsti_400x400.jpg',
       },
       src: 'https://pbs.twimg.com/media/F-MvCE3bQAASwYG?format=jpg&name=small',
       views: 1_183,
@@ -88,8 +83,7 @@ export default function Gallery() {
       id: '7',
       author: {
         name: 'HourlyYote (Twitter)',
-        avatar:
-          'https://pbs.twimg.com/profile_images/1626359654405271552/xEQPOxMB_400x400.jpg',
+        avatar: 'https://pbs.twimg.com/profile_images/1626359654405271552/xEQPOxMB_400x400.jpg',
       },
       src: 'https://video.twimg.com/ext_tw_video/1721271204638822400/pu/vid/avc1/480x854/R_xpnLlFrN_QlRSi.mp4',
       isAnimated: true,
@@ -98,12 +92,28 @@ export default function Gallery() {
     },
   ];
 
+  const dimensions = useWindowDimensions();
+  const screenW = dimensions?.width || Infinity;
+
+  let totalColumns: number;
+  if (screenW > 1024) totalColumns = 4;
+  else if (screenW > 768) totalColumns = 3;
+  else if (screenW > 640) totalColumns = 2;
+  else totalColumns = 1;
+
+  const columnImages: ImageProps[][] = Array.from({ length: totalColumns }, (_, column) =>
+    images.filter((_, index) => index % totalColumns == column),
+  );
+
   return (
-    <div className="h-full grid grid-cols-4 gap-x-12">
-      <MasonryColumn images={images.filter((_, index) => index % 4 == 0)} />
-      <MasonryColumn images={images.filter((_, index) => index % 4 == 1)} />
-      <MasonryColumn images={images.filter((_, index) => index % 4 == 2)} />
-      <MasonryColumn images={images.filter((_, index) => index % 4 == 3)} />
+    <div className="h-full grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-x-12">
+      {columnImages.map((column, index) => {
+        if (screenW > 640 || (index == 0 && screenW != Infinity)) {
+          return <MasonryColumn key={index} images={column} />;
+        } else {
+          return null;
+        }
+      })}
     </div>
   );
 }
