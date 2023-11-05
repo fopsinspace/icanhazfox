@@ -82,7 +82,7 @@ export default function Image(props: ImageProps) {
 
         <button
           className={`hover:bg-neutral-600 hover:bg-opacity-30 rounded-full p-2 ${
-            isLiked ? 'text-red-500' : 'text-current'
+            isLiked ? 'text-red-500 animate-heart' : 'text-current'
           }`}
           onClick={() => setLiked(!isLiked)}
         >
