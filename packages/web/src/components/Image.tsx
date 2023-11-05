@@ -11,6 +11,8 @@ export interface ImageProps {
     name: string;
     avatar: string;
   };
+  views: number;
+  likes: number;
 }
 
 export default function Image(props: ImageProps) {
@@ -63,7 +65,7 @@ export default function Image(props: ImageProps) {
             <span>{props.author.name}</span>
 
             <span className="before:content-[''] before:bg-current before:w-1 before:h-1 before:block before:rounded-full flex items-center gap-1">
-              {Math.floor(Math.random() * 10_000).toLocaleString()} Views
+              {props.views.toLocaleString("en-US", { notation: "compact" })} Views
             </span>
           </span>
         </div>
@@ -71,7 +73,7 @@ export default function Image(props: ImageProps) {
 
       {/* Heart Icon */}
       <div className="absolute bottom-8 right-4 flex items-center gap-2">
-        <span>{Math.floor(Math.random() * 5_000).toLocaleString()}</span>
+        <span>{props.likes.toLocaleString("en-US", { notation: "compact" })}</span>
 
         <button
           className={`hover:bg-neutral-600 hover:bg-opacity-30 rounded-full p-2 ${
