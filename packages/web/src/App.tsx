@@ -3,7 +3,7 @@ import Gallery from './components/Gallery';
 
 export default function App() {
   return (
-    <main className="p-12 min-h-screen dark:bg-neutral-900 dark:text-neutral-300">
+    <main className="p-12 min-h-screen bg-neutral-200 text-neutral-800 dark:bg-neutral-900 dark:text-neutral-300">
       <header className="flex items-center justify-between mb-8">
         <h1 className="font-bold font-display text-3xl">Browse</h1>
         <div className="flex items-center gap-x-8">
