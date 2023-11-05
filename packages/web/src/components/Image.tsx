@@ -5,7 +5,7 @@ export default function Image() {
   return (
     <Dialog.Root>
       <Dialog.Trigger>
-        <div className="w-full h-[30rem] bg-zinc-100 rounded-xl" />
+        <div className="w-full h-[30rem] bg-zinc-100 rounded-xl bg-[url('/test.jpg')] bg-cover" />
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="backdrop-blur-md backdrop-brightness-90 fixed top-0 left-0 right-0 bottom-0 grid place-items-center overflow-y-auto p-24">
