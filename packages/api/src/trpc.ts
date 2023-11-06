@@ -1,5 +1,10 @@
 import { initTRPC } from '@trpc/server';
 
-const { router, procedure } = initTRPC.create();
+interface Context {
+  req: Request;
+  resHeaders: Headers;
+}
 
-export { router, procedure };
+const { router, procedure } = initTRPC.context<Context>().create();
+
+export { router, procedure, type Context };
