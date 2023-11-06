@@ -9,7 +9,7 @@ export interface CommentProps {
 
 export default function Comment(props: CommentProps) {
   return (
-    <div className="grid gap-2 pb-4 border-b border-b-neutral-600">
+    <div className="grid gap-2 pt-4 border-t border-t-neutral-600">
       <div className="flex justify-between items-center">
         <a className="flex gap-2 font-semibold items-center hover:underline" href={`/user/${props.author.name}`}>
           <img src={props.author.avatar} className="rounded-full w-6 h-6" />
