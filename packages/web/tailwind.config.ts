@@ -18,14 +18,14 @@ export default {
         heart: {
           '0%': {
             transform: 'scale(1)',
-            filter: 'drop-shadow(0 0px 0px rgb(255 255 255 / 0))',
+            filter: 'drop-shadow(0 0px 0px currentColor)',
           },
           '50%': {
             transform: 'scale(1.2)',
           },
           '100%': {
             transform: 'scale(1)',
-            filter: 'drop-shadow(0 1px 6px rgb(239 68 68))',
+            filter: 'drop-shadow(0 1px 6px currentColor)',
           },
         },
       },
