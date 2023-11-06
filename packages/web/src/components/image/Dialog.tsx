@@ -3,6 +3,7 @@ import Comment, { type CommentProps } from '../Comment';
 import * as Dialog from '@radix-ui/react-dialog';
 import * as Form from '@radix-ui/react-form';
 import { IconHeart, IconAlbum, IconDownload, IconShare3, IconFlag3, IconX } from '@tabler/icons-react';
+import Tag from '../Tag';
 
 export default function ImageDialog(
   props: ImageProps & { likeState: [boolean, React.Dispatch<React.SetStateAction<boolean>>] },
@@ -38,13 +39,24 @@ export default function ImageDialog(
   ];
 
   return (
-    <Dialog.Content className="bg-neutral-200 dark:bg-neutral-800 p-8 flex relative gap-6 items-start h-full w-full text">
-      <div className="flex flex-col justify-between h-full">
-        {props.isAnimated ? <video src={props.src} autoPlay controls loop /> : <img src={props.src} loading="lazy" />}
+    <Dialog.Content className="bg-neutral-200 dark:bg-neutral-800 px-10 py-6 flex flex-col relative items-start text rounded-2xl top-36 xl:max-w-screen-lg">
+      <div className="flex justify-between items-start w-full mb-4">
+        <h3 className="font-medium text-lg">Viewing post by {props.author.name}</h3>
+        <Dialog.Close aria-label="Close">
+          <IconX className="text" />
+        </Dialog.Close>
+      </div>
+      <div>
+        <div className="flex flex-col justify-between h-full">
+          {props.isAnimated ? (
+            <video src={props.src} autoPlay controls loop className="rounded-lg" />
+          ) : (
+            <img src={props.src} loading="lazy" className="mb-2 rounded-lg" />
+          )}
 
-        <div className="flex flex-col gap-4">
-          <div className="flex justify-between">
-            <span>
+          <div className="mt-4">
+            <span className="text-xl font-medium mt-auto">{props.caption}</span>
+            <span className="block">
               {new Date().toLocaleDateString(navigator?.language ?? 'en-GB', {
                 day: 'numeric',
                 weekday: 'short',
@@ -54,106 +66,81 @@ export default function ImageDialog(
               })}
             </span>
 
-            <span>{props.views.toLocaleString('en-US', { notation: 'compact' })} Views</span>
-          </div>
-
-          <hr className="w-full border-neutral-600" />
-
-          <div className="flex justify-between">
-            <div>
-              {/* Like Button */}
-              <button
-                className={`hover:bg-neutral-600 hover:bg-opacity-30 rounded-full p-2 ${
-                  isLiked ? 'text-red-500 animate-heart' : 'text-current'
-                }`}
-                onClick={() => setLiked(!isLiked)}
-              >
-                <IconHeart
-                  // size="28"
-                  fill={isLiked ? 'currentColor' : 'transparent'}
-                />
-              </button>
-
-              {/* Save to Collection */}
-              <button
-                className={`hover:bg-neutral-600 hover:bg-opacity-30 rounded-full p-2 ${
-                  isLiked ? 'text-indigo-500 animate-heart' : 'text-current'
-                }`}
-              >
-                <IconAlbum />
-              </button>
-
-              {/* Download Button */}
-              <button className="hover:bg-neutral-600 hover:bg-opacity-30 rounded-full p-2 active:text-yellow-500">
-                <IconDownload />
-              </button>
+            {/* Tags */}
+            <div className="flex flex-wrap gap-2 mt-2">
+              {[
+                'Nulla',
+                'aliqua',
+                'fugiat',
+                'enim',
+                'sunt',
+                'tempor',
+                'consectetur',
+                'sint',
+                'occaecat',
+                'labore',
+                'adipisicing',
+                'magna',
+              ].map((tag, index) => (
+                <Tag key={index}>{tag}</Tag>
+              ))}
             </div>
 
-            <div>
-              {/* Share Button */}
-              <button className="hover:bg-neutral-600 hover:bg-opacity-30 rounded-full p-2 active:text-teal-500">
-                <IconShare3 />
-              </button>
+            <div className="mt-6 flex gap-x-4 items-center">
+              <img src={props.author.avatar} className="w-14 h-14 rounded-full" />
+              <div className="flex flex-col gap-y-2">
+                <span className="font-bold">{props.author.name}</span>
+                <button className="w-fit bg-neutral-300 text-black px-3 py-1 rounded-full font-medium text-sm select-none">
+                  Follow
+                </button>
+              </div>
+            </div>
 
-              {/* Report Button */}
-              <button className="hover:bg-neutral-600 hover:bg-opacity-30 rounded-full p-2 active:text-red-500">
-                <IconFlag3 />
-              </button>
+            <hr className="w-full border-neutral-600 my-4" />
+
+            <div className="flex justify-between">
+              <div>
+                {/* Like Button */}
+                <button
+                  className={`hover:bg-neutral-600 hover:bg-opacity-30 rounded-full p-2 ${
+                    isLiked ? 'text-red-500 animate-heart' : 'text-current'
+                  }`}
+                  onClick={() => setLiked((liked) => !liked)}
+                >
+                  <IconHeart fill={isLiked ? 'currentColor' : 'transparent'} />
+                </button>
+
+                {/* Save to Collection */}
+                <button
+                  className={`hover:bg-neutral-600 hover:bg-opacity-30 rounded-full p-2 ${
+                    isLiked ? 'text-indigo-500 animate-heart' : 'text-current'
+                  }`}
+                >
+                  <IconAlbum />
+                </button>
+
+                {/* Download Button */}
+                <button className="hover:bg-neutral-600 hover:bg-opacity-30 rounded-full p-2 active:text-yellow-500">
+                  <IconDownload />
+                </button>
+              </div>
+
+              <div>
+                {/* Share Button */}
+                <button className="hover:bg-neutral-600 hover:bg-opacity-30 rounded-full p-2 active:text-teal-500">
+                  <IconShare3 />
+                </button>
+
+                {/* Report Button */}
+                <button className="hover:bg-neutral-600 hover:bg-opacity-30 rounded-full p-2 active:text-red-500">
+                  <IconFlag3 />
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div className="w-full flex flex-col items-start gap-4">
-        <div>
-          <span className="text-lg mt-auto">{props.caption}</span>
-        </div>
-
-        <hr className="w-full border-neutral-600" />
-
-        {/* Tags */}
-        <div className="flex flex-wrap gap-2">
-          {[
-            'Nulla',
-            'aliqua',
-            'fugiat',
-            'enim',
-            'sunt',
-            'tempor',
-            'consectetur',
-            'sint',
-            'occaecat',
-            'labore',
-            'adipisicing',
-            'magna',
-          ].map((tag) => (
-            <a
-              key={tag}
-              href={`/browse/tag/${tag}`}
-              className="lowercase bg-neutral-700 rounded-xl px-2 py-0.5 hover:bg-neutral-600"
-            >
-              {tag}
-            </a>
-          ))}
-        </div>
-
-        <hr className="w-full border-neutral-600" />
-
-        {/* Author Profile */}
-        <div className="flex gap-4 w-full">
-          <img src={props.author.avatar} className="rounded-full w-16 h-16" />
-          <div className="grid">
-            <span className="font-semibold text-lg">{props.author.name}</span>
-            <span>Bio / Stats Here</span>
-          </div>
-        </div>
-
-        <hr className="w-full border-neutral-600" />
-
-        {/* Comments */}
-        <div className="w-full">
-          <h3 className="font-bold text-xl">50 Comments</h3>
-
+        <div className="w-full flex flex-col items-start gap-4">
           <Form.Root className="w-full mt-4">
             <Form.Field name="comment">
               <Form.Control asChild>
@@ -182,17 +169,20 @@ export default function ImageDialog(
             </span>
           </Form.Root>
 
-          <div className="flex flex-col gap-4 mt-6">
-            {comments.map((comment, index) => (
-              <Comment key={index} {...comment} />
-            ))}
+          <hr className="w-full border-neutral-600" />
+
+          {/* Comments */}
+          <div className="w-full">
+            <h3 className="font-bold text-xl">50 Comments</h3>
+
+            <div className="flex flex-col gap-4 mt-6">
+              {[...comments, ...comments].map((comment, index) => (
+                <Comment key={index} {...comment} />
+              ))}
+            </div>
           </div>
         </div>
       </div>
-
-      <Dialog.Close aria-label="Close" className="absolute top-4 right-4">
-        <IconX className="text" />
-      </Dialog.Close>
     </Dialog.Content>
   );
 }

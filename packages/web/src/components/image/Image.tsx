@@ -39,10 +39,8 @@ export default function Image(props: ImageProps) {
           <div className="absolute w-full h-1/2 bottom-0 left-0 bg-gradient-to-t from-neutral-900 to-transparent"></div>
         </Dialog.Trigger>
         <Dialog.Portal>
-          <Dialog.Overlay className="backdrop-brightness-50 fixed top-0 left-0 right-0 bottom-0 grid place-items-center">
-            <div className="h-[90vh] w-[90vw] rounded-2xl overflow-hidden">
-              <ImageDialog {...props} likeState={[isLiked, setLiked]} />
-            </div>
+          <Dialog.Overlay className="backdrop-brightness-50 fixed top-0 left-0 right-0 bottom-0 grid place-items-center overflow-y-auto">
+            <ImageDialog {...props} likeState={[isLiked, setLiked]} />
           </Dialog.Overlay>
         </Dialog.Portal>
       </Dialog.Root>
