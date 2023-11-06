@@ -460,6 +460,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@fastify/busboy@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@fastify/busboy@npm:2.0.0"
+  checksum: fdaedca865721769a3a8d788c9efd6af90e73b5f2ff0160dbf46a6160631bbe56e6e5770fafb9a6395111372c73fb2bfa8d4698edc98c6b1f7d97cc9b74e37ea
+  languageName: node
+  linkType: hard
+
 "@floating-ui/core@npm:^1.4.2":
   version: 1.5.0
   resolution: "@floating-ui/core@npm:1.5.0"
