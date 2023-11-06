@@ -1,4 +1,4 @@
-import { type ImageProps } from './Image';
+import { type ImageProps } from './image/Image';
 import MasonryColumn from './MasonryColumn';
 import useWindowDimensions from '../hooks/useWindowDimensions';
 

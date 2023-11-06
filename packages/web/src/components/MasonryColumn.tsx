@@ -1,4 +1,4 @@
-import Image, { type ImageProps } from './Image';
+import Image, { type ImageProps } from './image/Image';
 
 export default function MasonryColumn({ images }: { images: ImageProps[] }) {
   return (
