@@ -1,0 +1,11 @@
+name = "icanhazfox"
+main = "src/index.ts"
+compatibility_date = "2023-10-25"
+
+[[ d1_databases ]]
+binding = "DB"
+database_name = "icanhazfox"
+database_id = "icanhazfox-cfd1"
+
+[vars]
+CORS_ORIGIN = "http://localhost:5173"
