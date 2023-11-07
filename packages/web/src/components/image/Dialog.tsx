@@ -39,7 +39,7 @@ export default function ImageDialog(
   ];
 
   return (
-    <Dialog.Content className="bg-neutral-200 dark:bg-neutral-800 px-10 py-6 flex flex-col relative items-start text rounded-2xl top-36 xl:max-w-screen-lg">
+    <div className="bg-neutral-200 dark:bg-neutral-800 px-10 py-6 flex flex-col relative items-start text rounded-2xl top-36 xl:max-w-screen-lg">
       <div className="flex justify-between items-start w-full mb-4">
         <h3 className="font-medium text-lg">Viewing post by {props.author.name}</h3>
         <Dialog.Close aria-label="Close">
@@ -183,6 +183,6 @@ export default function ImageDialog(
           </div>
         </div>
       </div>
-    </Dialog.Content>
+    </div>
   );
 }

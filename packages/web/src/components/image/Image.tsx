@@ -18,10 +18,15 @@ export interface ImageProps {
 
 export default function Image(props: ImageProps) {
   const [isLiked, setLiked] = useState<boolean>(false);
+  const [_open, setOpen] = useState(false);
 
   return (
     <div className="w-full h-auto relative rounded-2xl overflow-hidden">
-      <Dialog.Root>
+      <Dialog.Root
+        onOpenChange={(open) => {
+          setOpen(open);
+        }}
+      >
         <Dialog.Trigger>
           {props.isAnimated ? (
             <video
@@ -40,7 +45,9 @@ export default function Image(props: ImageProps) {
         </Dialog.Trigger>
         <Dialog.Portal>
           <Dialog.Overlay className="backdrop-brightness-50 fixed top-0 left-0 right-0 bottom-0 grid place-items-center overflow-y-auto">
-            <ImageDialog {...props} likeState={[isLiked, setLiked]} />
+            <Dialog.Content asChild>
+              <ImageDialog {...props} likeState={[isLiked, setLiked]} />
+            </Dialog.Content>
           </Dialog.Overlay>
         </Dialog.Portal>
       </Dialog.Root>
