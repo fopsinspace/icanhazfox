@@ -17,8 +17,10 @@
     "migrate": "./migrate.sh"
   },
   "dependencies": {
+    "@lucia-auth/adapter-sqlite": "^2.0.1",
     "@trpc/server": "^10.43.1",
     "drizzle-orm": "^0.28.6",
+    "lucia": "^2.7.3",
     "zod": "^3.22.4"
   }
 }
