@@ -7,14 +7,18 @@
   "packageManager": "yarn@4.0.1",
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20231025.0",
+    "drizzle-kit": "^0.19.13",
     "typescript": "^5.2.2",
     "wrangler": "^3.15.0"
   },
   "scripts": {
-    "dev": "wrangler dev"
+    "dev": "wrangler dev",
+    "generate": "drizzle-kit generate:sqlite --schema=src/schemas/index.ts",
+    "migrate": "./migrate.sh"
   },
   "dependencies": {
     "@trpc/server": "^10.43.1",
+    "drizzle-orm": "^0.28.6",
     "zod": "^3.22.4"
   }
 }
