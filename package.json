@@ -10,6 +10,10 @@
   "workspaces": [
     "./packages/*"
   ],
+  "scripts": {
+    "format": "prettier --write .",
+    "lint": "yarn workspaces foreach -Rptv --from './packages/*' run lint"
+  },
   "packageManager": "yarn@4.0.1",
   "devDependencies": {
     "eslint": "^8.52.0",

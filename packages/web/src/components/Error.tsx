@@ -1,4 +1,4 @@
-import { useAsyncError, Link } from 'react-router-dom';
+import { useAsyncError, Link } from "react-router-dom";
 
 interface ErrorProps {
   title: string;
@@ -7,18 +7,22 @@ interface ErrorProps {
   details?: string;
 }
 
-export default function ErrorPage(props: ErrorProps) {
+export default function Error(props: ErrorProps) {
   return (
-    <div className="w-screen h-screen overflow-hidden grid place-items-center">
+    <div className="grid flex-grow place-items-center overflow-hidden">
       <div>
         <div className="text-lg">
           <h1 className="text-xl font-bold">{props.title}</h1>
-          <p className="w-2/3">{props.message}</p>
+          <p>{props.message}</p>
 
-          <div className="flex gap-2 mt-6 ">
-            {(props.showBackLink == true || props.showBackLink == undefined) && (
+          <div className="mt-6 flex gap-2 ">
+            {(props.showBackLink == true ||
+              props.showBackLink == undefined) && (
               <>
-                <button className="border-b border-dotted hover:border-solid" onClick={() => history.back()}>
+                <button
+                  className="border-b border-dotted hover:border-solid"
+                  onClick={() => history.back()}
+                >
                   Go Back
                 </button>
 
@@ -35,11 +39,13 @@ export default function ErrorPage(props: ErrorProps) {
         {props.details && (
           <div className="w-full">
             <details className="mt-16">
-              <summary className="mb-2 hover:cursor-pointer border-b border-dotted hover:border-solid max-w-fit">
+              <summary className="mb-2 max-w-fit border-b border-dotted hover:cursor-pointer hover:border-solid">
                 More Details
               </summary>
 
-              <code className="bg-neutral-800 pl-4 pr-6 pt-4 pb-6 rounded w-full block">{props.details}</code>
+              <code className="block w-full rounded bg-neutral-800 pb-6 pl-4 pr-6 pt-4">
+                {props.details}
+              </code>
               <p className="text-xs">
                 <a
                   className="border-b border-dotted hover:border-solid"
@@ -56,11 +62,11 @@ export default function ErrorPage(props: ErrorProps) {
   );
 }
 
-export function RouterErrorPage() {
+export function AsyncError() {
   const error = useAsyncError();
 
   return (
-    <ErrorPage
+    <Error
       title="Router Error"
       message="An error occurred while trying to render that page. Please try again later."
       showBackLink={false}

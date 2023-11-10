@@ -2,7 +2,9 @@
   "name": "api",
   "private": true,
   "type": "module",
-  "files": ["out"],
+  "files": [
+    "out"
+  ],
   "license": "MPL-2.0",
   "packageManager": "yarn@4.0.1",
   "devDependencies": {

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from "react";
 
 interface WindowDimensions {
   width: number;
@@ -14,23 +14,25 @@ interface WindowDimensions {
  */
 export default function useWindowDimensions(): WindowDimensions | null {
   const getWindowDimensions = useCallback(() => {
-    if (typeof window == 'undefined') return null;
+    if (typeof window == "undefined") return null;
     return <WindowDimensions>{
       width: window.innerWidth,
       height: window.innerHeight,
     };
   }, []);
 
-  const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
+  const [windowDimensions, setWindowDimensions] = useState(
+    getWindowDimensions(),
+  );
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       const handleResize = () => {
         setWindowDimensions(getWindowDimensions());
       };
 
-      window.addEventListener('resize', handleResize);
-      return () => window.removeEventListener('resize', handleResize);
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
     }
   }, [getWindowDimensions]);
 

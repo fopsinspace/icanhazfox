@@ -1,10 +1,10 @@
-import Image, { type ImageProps } from './image/Image';
+import Post, { type PostProps } from "./Post";
 
-export default function MasonryColumn({ images }: { images: ImageProps[] }) {
+export default function MasonryColumn({ images }: { images: PostProps[] }) {
   return (
     <div className="flex flex-col gap-6">
       {images.map((image) => (
-        <Image key={image.id} {...image} />
+        <Post key={image.id} {...image} />
       ))}
     </div>
   );

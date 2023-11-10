@@ -3,8 +3,14 @@
     "**/.yarn": true,
     "**/.pnp.*": true
   },
+
   "eslint.nodePath": ".yarn/sdks",
-  "prettier.prettierPath": ".yarn/sdks/prettier/index.cjs",
+
   "typescript.tsdk": ".yarn/sdks/typescript/lib",
-  "typescript.enablePromptUseWorkspaceTsdk": true
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+
+  "prettier.prettierPath": ".yarn/sdks/prettier/index.cjs",
+  "prettier.configPath": "prettier.config.cjs",
+  "prettier.singleQuote": true,
+  "prettier.semi": true
 }
