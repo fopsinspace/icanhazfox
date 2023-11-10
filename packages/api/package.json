@@ -2,7 +2,7 @@
   "name": "api",
   "private": true,
   "type": "module",
-  "main": "src/index.ts",
+  "files": ["out"],
   "license": "MPL-2.0",
   "packageManager": "yarn@4.0.1",
   "devDependencies": {
@@ -13,6 +13,7 @@
   },
   "scripts": {
     "dev": "wrangler dev",
+    "build": "tsc",
     "generate": "drizzle-kit generate:sqlite --schema=src/schemas/index.ts",
     "migrate": "./migrate.sh"
   },
