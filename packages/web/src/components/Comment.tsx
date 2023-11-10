@@ -1,5 +1,5 @@
-import * as Dropdown from '@radix-ui/react-dropdown-menu';
-import { IconDotsVertical, IconFlag3 } from '@tabler/icons-react';
+import * as Dropdown from "@radix-ui/react-dropdown-menu";
+import { IconDotsVertical, IconFlag3 } from "@tabler/icons-react";
 
 export interface CommentProps {
   author: { name: string; avatar: string };
@@ -9,30 +9,33 @@ export interface CommentProps {
 
 export default function Comment(props: CommentProps) {
   return (
-    <div className="grid gap-2 border-t border-t-neutral-600">
-      <div className="flex justify-between items-center">
-        <a className="flex gap-2 font-semibold items-center hover:underline" href={`/user/${props.author.name}`}>
-          <img src={props.author.avatar} className="rounded-full w-6 h-6" />
+    <div className="grid gap-2">
+      <div className="flex items-center justify-between">
+        <a
+          className="flex items-center gap-2 font-semibold hover:underline"
+          href={`/user/${props.author.name}`}
+        >
+          <img src={props.author.avatar} className="h-6 w-6 rounded-full" />
           <span>{props.author.name}</span>
         </a>
 
         <div className="flex items-center">
           <span className="text-neutral-500">
-            {props.created.toLocaleDateString(navigator?.language ?? 'en-GB', {
-              day: 'numeric',
-              weekday: 'short',
-              month: 'long',
-              hour: '2-digit',
-              minute: '2-digit',
+            {props.created.toLocaleDateString(navigator?.language ?? "en-GB", {
+              day: "numeric",
+              weekday: "short",
+              month: "long",
+              hour: "2-digit",
+              minute: "2-digit",
               // TODO: Setup post date
-              year: new Date().getFullYear() != 2023 ? 'numeric' : undefined,
+              year: new Date().getFullYear() != 2023 ? "numeric" : undefined,
             })}
           </span>
 
           <Dropdown.Root>
             <Dropdown.Trigger asChild>
               <button
-                className="p-1 hover:bg-neutral-600 hover:bg-opacity-30 rounded-full w-8 h-8 ml-2"
+                className="ml-2 h-8 w-8 rounded-full p-1 outline-none hover:bg-neutral-600 hover:bg-opacity-30"
                 aria-label="Comment Options"
               >
                 <IconDotsVertical />
@@ -40,8 +43,12 @@ export default function Comment(props: CommentProps) {
             </Dropdown.Trigger>
 
             <Dropdown.Portal>
-              <Dropdown.Content side="bottom" align="end" className="bg-neutral-700 py-2 rounded-lg text">
-                <Dropdown.Item className="flex gap-2 items-center hover:bg-neutral-600 px-2 py-2 cursor-pointer">
+              <Dropdown.Content
+                side="bottom"
+                align="end"
+                className="text rounded-lg bg-neutral-700 py-2"
+              >
+                <Dropdown.Item className="flex cursor-pointer items-center gap-2 px-2 py-2 outline-none hover:bg-neutral-600">
                   <IconFlag3 size="18" /> Report
                 </Dropdown.Item>
 
