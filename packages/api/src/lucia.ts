@@ -9,6 +9,10 @@ export const initializeLucia = (db: D1Database, env: 'DEV' | 'PROD') =>
       session: 'user_session',
     }),
     env,
+    getUserAttributes: (data) => ({
+      username: data.username,
+      avatar: data.avatar,
+    }),
   });
 
 export type Auth = ReturnType<typeof initializeLucia>;
