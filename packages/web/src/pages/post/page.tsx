@@ -175,8 +175,11 @@ export default function PostPage() {
           </span>
         </span>
 
-        <div className="flex gap-8 w-full items-center">
-          <Link to={`/user/${post.author.name}`} className="flex items-center gap-2 hover:underline">
+        <div className="flex w-full items-center gap-8">
+          <Link
+            to={`/user/${post.author.name}`}
+            className="flex items-center gap-2 hover:underline"
+          >
             <img src={post.author.avatar} className="h-8 w-8 rounded-full" />
             <span className="font-bold">{post.author.name}</span>
           </Link>
