@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useRoute } from "wouter";
 import {
   IconAlbum,
   IconDownload,
@@ -94,7 +94,7 @@ const comments: CommentProps[] = [
 ];
 
 export default function PostPage() {
-  const post = useLoaderData() as PostProps;
+  const post = undefined as any;
   const [isLiked, setLiked] = useState<boolean>(false);
 
   return (

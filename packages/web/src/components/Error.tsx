@@ -1,4 +1,4 @@
-import { useAsyncError, Link } from "react-router-dom";
+import { Link } from "wouter";
 
 interface ErrorProps {
   title: string;
@@ -63,14 +63,11 @@ export default function Error(props: ErrorProps) {
 }
 
 export function AsyncError() {
-  const error = useAsyncError();
-
   return (
     <Error
       title="Router Error"
       message="An error occurred while trying to render that page. Please try again later."
       showBackLink={false}
-      details={String(error)}
     />
   );
 }
