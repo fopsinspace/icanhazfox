@@ -12,11 +12,15 @@
   ],
   "scripts": {
     "format": "prettier --write .",
-    "lint": "yarn workspaces foreach -Rptv --from './packages/*' run lint"
+    "lint": "yarn workspaces foreach -Rptv --from './packages/*' run lint",
+    "postinstall": "husky install"
   },
   "packageManager": "yarn@4.0.1",
   "devDependencies": {
+    "@commitlint/cli": "^18.4.0",
+    "@commitlint/config-conventional": "^18.4.0",
     "eslint": "^8.52.0",
+    "husky": "^8.0.3",
     "prettier": "^3.0.3",
     "typescript": "^5.2.2"
   }
