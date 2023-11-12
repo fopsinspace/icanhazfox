@@ -11,8 +11,8 @@ export default function SignInPage() {
     e.preventDefault();
 
     setMutating(true);
-    trpc.signIn.mutate({username, password}).then(() => setMutating(false))
-  }
+    trpc.signIn.mutate({ username, password }).then(() => setMutating(false));
+  };
 
   return (
     <main className="flex flex-row items-center gap-x-16">
@@ -32,42 +32,46 @@ export default function SignInPage() {
         {mutating ? (
           <div>mutating...</div>
         ) : (
-        <Form.Root className="max-w-fit" onSubmit={submit}>
-          <Form.Field name="username">
-            <Form.Label asChild>
-              <h5 className="mb-1">username</h5>
-            </Form.Label>
-            <Form.Control asChild>
-              <input
-                type="text"
-                className="block rounded-md border-2 border-neutral-300 bg-transparent px-4 py-2 font-medium"
-                onInput={(e) => {setUsername(e.currentTarget.value)}}
-                value={username}
-                required
-              />
-            </Form.Control>
-          </Form.Field>
-          <hr className="h-4 border-none" />
-          <Form.Field name="password">
-            <Form.Label asChild>
-              <h5 className="mb-1">password</h5>
-            </Form.Label>
-            <Form.Control asChild>
-              <input
-                type="password"
-                onInput={(e) => {
-                  setPassword(e.currentTarget.value);
-                }}
-                value={password}
-                className="block rounded-md border-2 border-neutral-300 bg-transparent px-4 py-2"
-                required
-              />
-            </Form.Control>
-          </Form.Field>
-          <Form.Submit asChild>
-            <button className="mt-4 bg-neutral-300 text-black w-full py-2 px-4 rounded-md">submit</button>
-          </Form.Submit>
-        </Form.Root>
+          <Form.Root className="max-w-fit" onSubmit={submit}>
+            <Form.Field name="username">
+              <Form.Label asChild>
+                <h5 className="mb-1">username</h5>
+              </Form.Label>
+              <Form.Control asChild>
+                <input
+                  type="text"
+                  className="block rounded-md border-2 border-neutral-300 bg-transparent px-4 py-2 font-medium"
+                  onInput={(e) => {
+                    setUsername(e.currentTarget.value);
+                  }}
+                  value={username}
+                  required
+                />
+              </Form.Control>
+            </Form.Field>
+            <hr className="h-4 border-none" />
+            <Form.Field name="password">
+              <Form.Label asChild>
+                <h5 className="mb-1">password</h5>
+              </Form.Label>
+              <Form.Control asChild>
+                <input
+                  type="password"
+                  onInput={(e) => {
+                    setPassword(e.currentTarget.value);
+                  }}
+                  value={password}
+                  className="block rounded-md border-2 border-neutral-300 bg-transparent px-4 py-2"
+                  required
+                />
+              </Form.Control>
+            </Form.Field>
+            <Form.Submit asChild>
+              <button className="mt-4 w-full rounded-md bg-neutral-300 px-4 py-2 text-black">
+                submit
+              </button>
+            </Form.Submit>
+          </Form.Root>
         )}
       </div>
     </main>

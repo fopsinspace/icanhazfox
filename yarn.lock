@@ -4954,6 +4954,12 @@ __metadata:
   languageName: node
   linkType: hard
 
+"prettier-config@workspace:^, prettier-config@workspace:packages/prettier-config":
+  version: 0.0.0-use.local
+  resolution: "prettier-config@workspace:packages/prettier-config"
+  languageName: unknown
+  linkType: soft
+
 "prettier-plugin-tailwindcss@npm:^0.5.6":
   version: 0.5.6
   resolution: "prettier-plugin-tailwindcss@npm:0.5.6"
@@ -6125,6 +6131,7 @@ __metadata:
     eslint-plugin-react-refresh: "npm:^0.4.3"
     postcss: "npm:^8.4.31"
     prettier: "npm:^3.0.3"
+    prettier-config: "workspace:^"
     prettier-plugin-tailwindcss: "npm:^0.5.6"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"

@@ -5,15 +5,13 @@ export default function TestPage() {
   // const {data, error, isLoading} = trpc.hello.useSWR();
 
   useEffect(() => {
-    trpc.hello.query()
-  }, [])
+    trpc.hello.query();
+  }, []);
 
   return (
     <>
-    <h1>trpc test</h1>
-    <pre>
-      {/* {isLoading ? 'loading...' : data} */}
-    </pre>
+      <h1>trpc test</h1>
+      <pre>{/* {isLoading ? 'loading...' : data} */}</pre>
     </>
-  )
+  );
 }

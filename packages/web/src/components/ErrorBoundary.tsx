@@ -18,7 +18,7 @@ export default class ErrorBoundary extends Component<ErrorProps> {
   }
 
   // FIXME: Fix this eslint error. Variables prefixes with `_` shouldn't error.
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+   
   /* public static getDerivedStateFromError(_error: unknown) {
     return { hasError: true }
   } */
