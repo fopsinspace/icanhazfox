@@ -10,6 +10,8 @@ export default function SignUpPage() {
   );
 
   useEffect(() => {
+    if (!password || !password.length) return;
+
     setzxcvbnResult(zxcvbn(password));
   }, [password]);
 
@@ -57,19 +59,19 @@ export default function SignUpPage() {
                 required
               />
             </Form.Control>
-            {zxcvbnResult && (
+            {(password.length > 0 && zxcvbnResult) && (
               <>
                 <hr
-                  className={`mt-4 border-2 transition-all ${
-                    zxcvbnResult.score === 0 ? "w-1/5 border-red-500" : ""
+                  className={`mt-4 border-2 transition-all ease-out-circ duration-300 ${
+                    zxcvbnResult.score === 0 ? "w-0 border-red-500" : ""
                   } ${
-                    zxcvbnResult.score === 1 ? "w-2/5 border-orange-500" : ""
+                    zxcvbnResult.score === 1 ? "w-1/4 border-orange-500" : ""
                   } ${
-                    zxcvbnResult.score === 2 ? "w-3/5 border-yellow-500" : ""
+                    zxcvbnResult.score === 2 ? "w-2/4 border-yellow-500" : ""
                   } ${
-                    zxcvbnResult.score === 3 ? "w-4/5 border-green-500" : ""
+                    zxcvbnResult.score === 3 ? "w-3/4 border-green-500" : ""
                   } ${
-                    zxcvbnResult.score === 4 ? "w-5/5 border-green-600" : ""
+                    zxcvbnResult.score === 4 ? "w-full border-green-600" : ""
                   }`}
                 />
                 <span>

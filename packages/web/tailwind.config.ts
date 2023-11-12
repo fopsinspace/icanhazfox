@@ -14,6 +14,11 @@ export default {
       animation: {
         heart: "heart 500ms cubic-bezier(0, 0.55, 0.45, 1) forwards",
       },
+      transitionTimingFunction: {
+        "in-circ": "cubic-bezier(0.55, 0, 1, 0.45)",
+        "out-circ": "cubic-bezier(0, 0.55, 0.45, 1)",
+        "in-out-circ": "cubic-bezier(0.85, 0, 0.15, 1)"
+      },
       keyframes: {
         heart: {
           "0%": {
