@@ -2,13 +2,13 @@ import { TRPCError } from '@trpc/server';
 import { procedure } from '../trpc';
 import { z } from 'zod';
 
+export const AuthInput = z.object({
+  username: z.string().min(3).max(12),
+  password: z.string().min(8).max(64), // https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html
+});
+
 export default procedure
-  .input(
-    z.object({
-      username: z.string().min(3).max(12),
-      password: z.string().min(8).max(64), // https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html
-    }),
-  )
+  .input(AuthInput)
   .mutation(async ({ ctx: { auth, db, resHeaders }, input }) => {
     const existingUser = await db.query.user.findFirst({
       where: (user, { eq }) => eq(user.username, input.username.toLowerCase()),
