@@ -4,6 +4,7 @@ import SignUpPage from "./pages/auth/signup";
 import TestPage from "./pages/auth/test";
 import BrowseNewPage from "./pages/browse/new/page";
 import PostPage from "./pages/post/page";
+import SignInPage from "./pages/auth/signin";
 
 export default function App() {
 
@@ -13,6 +14,7 @@ export default function App() {
         <Route path="/" component={BrowseNewPage} />
         <Route path="/post/:postId" component={PostPage} />
         <Route path="/signup" component={SignUpPage} />
+        <Route path="/signin" component={SignInPage} />
         <Route path="/test" component={TestPage} /> 
     </ErrorBoundary>
     </div>
