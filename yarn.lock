@@ -1656,6 +1656,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@trpc/client@npm:^10.43.1":
+  version: 10.43.3
+  resolution: "@trpc/client@npm:10.43.3"
+  peerDependencies:
+    "@trpc/server": 10.43.3
+  checksum: c6ffb55c2f356973b9a2c5c49ebb9ccf1710aaa9b77901783f4c4d6e4f5a4d23e1de1ae8268d3a0cbe656260ba5696c1f0c7489397f58b4c39a9ea2534e412c1
+  languageName: node
+  linkType: hard
+
 "@trpc/server@npm:^10.43.1":
   version: 10.43.1
   resolution: "@trpc/server@npm:10.43.1"
@@ -2058,7 +2067,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"api@workspace:packages/api":
+"api@workspace:^, api@workspace:packages/api":
   version: 0.0.0-use.local
   resolution: "api@workspace:packages/api"
   dependencies:
@@ -6098,6 +6107,8 @@ __metadata:
     "@radix-ui/react-form": "npm:^0.0.3"
     "@radix-ui/react-scroll-area": "npm:^1.0.5"
     "@tabler/icons-react": "npm:^2.40.0"
+    "@trpc/client": "npm:^10.43.1"
+    "@trpc/server": "npm:^10.43.1"
     "@types/react": "npm:^18.2.15"
     "@types/react-dom": "npm:^18.2.7"
     "@typescript-eslint/eslint-plugin": "npm:^6.0.0"
@@ -6106,6 +6117,7 @@ __metadata:
     "@zxcvbn-ts/core": "npm:^3.0.4"
     "@zxcvbn-ts/language-common": "npm:^3.0.4"
     "@zxcvbn-ts/language-en": "npm:^3.0.2"
+    api: "workspace:^"
     autoprefixer: "npm:^10.4.16"
     eslint: "npm:^8.45.0"
     eslint-config-prettier: "npm:^9.0.0"

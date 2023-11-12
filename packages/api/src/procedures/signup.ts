@@ -11,7 +11,7 @@ export default procedure
   )
   .mutation(async ({ ctx: { auth, db, resHeaders }, input }) => {
     const existingUser = await db.query.user.findFirst({
-      where: (user, { eq }) => eq(user.id, input.username.toLowerCase()),
+      where: (user, { eq }) => eq(user.username, input.username.toLowerCase()),
     });
 
     if (existingUser) {
@@ -28,7 +28,7 @@ export default procedure
         providerUserId: input.username.toLowerCase(),
       },
       attributes: {
-        avatar: undefined,
+        avatar: null,
         username: input.username,
       },
     });

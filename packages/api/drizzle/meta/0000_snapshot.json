@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "sqlite",
-  "id": "77eb6f0b-5014-4bf8-bfba-8a8f5dabf03b",
+  "id": "23ea4039-9ed9-4f0c-b0a2-601cc3427866",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "user_key": {
@@ -107,6 +107,20 @@
           "type": "text",
           "primaryKey": true,
           "notNull": true,
+          "autoincrement": false
+        },
+        "username": {
+          "name": "username",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "avatar": {
+          "name": "avatar",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
           "autoincrement": false
         }
       },
