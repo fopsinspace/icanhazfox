@@ -1,13 +1,23 @@
 import * as Form from "@radix-ui/react-form";
-import { useEffect, useState } from "react";
+import { type FormEvent, useEffect, useState } from "react";
 import { zxcvbn } from "../../utils/zxcvbn";
 import { ZxcvbnResult } from "@zxcvbn-ts/core";
+import { trpc } from "../../utils/trpc";
 
 export default function SignUpPage() {
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [zxcvbnResult, setzxcvbnResult] = useState<ZxcvbnResult | undefined>(
     undefined,
   );
+  const [mutating, setMutating] = useState(false);
+
+  const submit = (e: FormEvent) => {
+    e.preventDefault();
+
+    setMutating(true);
+    trpc.signUp.mutate({username, password}).then(() => {setMutating(false)})
+  }
 
   useEffect(() => {
     if (!password || !password.length) return;
@@ -30,7 +40,10 @@ export default function SignUpPage() {
 
       <div className="w-full p-8">
         <h1 className="mb-4 text-3xl font-bold">Sign Up</h1>
-        <Form.Root className="max-w-fit">
+        {mutating ? (
+          <div>mutating...</div>
+        ) : (
+        <Form.Root className="max-w-fit" onSubmit={submit}>
           <Form.Field name="username">
             <Form.Label asChild>
               <h5 className="mb-1">username</h5>
@@ -39,6 +52,8 @@ export default function SignUpPage() {
               <input
                 type="text"
                 className="block rounded-md border-2 border-neutral-300 bg-transparent px-4 py-2 font-medium"
+                onInput={(e) => {setUsername(e.currentTarget.value)}}
+                value={username}
                 required
               />
             </Form.Control>
@@ -89,6 +104,7 @@ export default function SignUpPage() {
             <button className="mt-4 bg-neutral-300 text-black w-full py-2 px-4 rounded-md">submit</button>
           </Form.Submit>
         </Form.Root>
+        )}
       </div>
     </main>
   );

@@ -16,14 +16,17 @@
     "@radix-ui/react-form": "^0.0.3",
     "@radix-ui/react-scroll-area": "^1.0.5",
     "@tabler/icons-react": "^2.40.0",
+    "@trpc/client": "^10.43.1",
     "@zxcvbn-ts/core": "^3.0.4",
     "@zxcvbn-ts/language-common": "^3.0.4",
     "@zxcvbn-ts/language-en": "^3.0.2",
+    "api": "workspace:^",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "wouter": "^2.12.1"
   },
   "devDependencies": {
+    "@trpc/server": "^10.43.1",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
