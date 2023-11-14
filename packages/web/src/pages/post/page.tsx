@@ -9,7 +9,6 @@ import {
 } from "@tabler/icons-react";
 import Tag from "../../components/Tag";
 import * as Form from "@radix-ui/react-form";
-import { type PostProps } from "../../components/Post";
 import Comment, { type CommentProps } from "../../components/Comment";
 
 const comments: CommentProps[] = [
