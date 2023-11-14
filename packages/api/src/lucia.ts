@@ -1,5 +1,6 @@
 import { d1 } from '@lucia-auth/adapter-sqlite';
 import { lucia } from 'lucia';
+import { web } from 'lucia/middleware';
 
 export const initializeLucia = (db: D1Database, env: 'DEV' | 'PROD') =>
   lucia({
@@ -13,9 +14,10 @@ export const initializeLucia = (db: D1Database, env: 'DEV' | 'PROD') =>
       username: data?.username,
       avatar: data?.avatar,
     }),
+    middleware: web(),
     experimental: {
       debugMode: env === 'DEV',
-    }
+    },
   });
 
 export type Auth = ReturnType<typeof initializeLucia>;
